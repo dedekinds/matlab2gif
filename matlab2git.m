@@ -1,12 +1,7 @@
 % clear%n边形随机试验
- n=43;
-% x=20*rand(n,1);
-% y=20*rand(n,1);
-% x=[0.5;0.1;0.55;0.7;0.9];
-% y=[1;0.5;0.2;0.2;0.46];
-
-
-
+ n=23;
+x=20*rand(n,1);
+y=20*rand(n,1);
 
 
 o=(n+1)/2;%间隔
@@ -15,20 +10,15 @@ Y=[y;y;y];%循环数组用3倍的原数组表示，其中实际数组为中间的数组(n+1)号位开始
 Z=X+Y*i;
 
 
-for iter=1:40
-    %Z=real(Z)-mean(real(Z))+(imag(Z)-mean(imag(Z)))*i;%将重心移到原点
-   %Z=real(Z)./norm(real(Z),2)+imag(Z)./norm(imag(Z),2)*i;%标准化
+for iter=1:10
    pause(0.05)
    plot(1:n+1,[real(Z(n+1:2*n));real(Z(n+1))],'bo-',1:n+1,[imag(Z(n+1:2*n));imag(Z(n+1))],'r*-')
+%_______
     title(['Iteration ', num2str(iter)]);
     picname=[num2str(iter) '.fig'];%保存的文件名：如i=1时，picname=1.fig
+%_______ 
     %hold on % 写后面的字时，不把前面的字冲掉
     saveas(gcf,picname)
-    %set(gca, 'XLim', [-0.5 0.5], 'YLim', [-0.5 0.5]); axis equal;
-    %title(['Iteration ', num2str(iter)]);
-    %pause(0.5)
-    %t=t+1
-   % hold on
     X=[real(Z(n+1:2*n));real(Z(n+1:2*n));real(Z(n+1:2*n))];
     Y=[imag(Z(n+1:2*n));imag(Z(n+1:2*n));imag(Z(n+1:2*n))];
     for t=(n+1):(2*n)
@@ -57,8 +47,6 @@ end
 
 
 %end
-
-
 %——————————————————————————————
 stepall=iter;
 for i=1:stepall
